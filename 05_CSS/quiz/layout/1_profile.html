@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <style>
+    .profile {
+      text-align: center;
+    }
+
+    .profile > img {
+      /* (참고) img는 인라인 요소이지만 인라인-블록처럼 동작 */
+      width: 150px;
+      /* 요소를 원으로 만들기 */
+      border-radius: 50%;
+      /* 이미지 가운데 정렬하기(2가지) */
+      /* 1) 부모에 text-align:center */
+      /* 2) 가로 길이를 갖는 블록 요소에 margin: 0 auto; */
+      /* display: block;
+      margin: 0 auto; */      
+      margin-top: 100px;
+    }
+
+    .title {
+      /* 글자 가운데 정렬하기 */
+      text-align: center;
+      font-size: 22px;
+    }
+
+    .content {
+      text-align: center;
+    }
+
+    /* 일부 글자만 스타일링 */
+    .co {
+      color: darkorchid;
+      font-weight: 700;
+    }
+
+    .box {
+      width: 500px;
+      background-color: blanchedalmond;
+      text-align: center;
+      padding: 20px 10px;
+      border-radius: 20px;
+      margin: 0 auto;
+      box-shadow: 5px 8px rgb(255, 227, 185);
+    }
+
+  </style>
+</head>
+<body>
+  <!-- 주어진 구조 외에 추가 가능 -->
+  <div class="profile">
+    <img src="../../images/character.jpg" alt="프로필사진">
+  </div>
+
+  <h3 class="title">USAGI</h3>
+
+  <p class="content">
+    <span class="co">치이카와</span> 친구
+  </p>
+
+  <div class="box">
+    치이카와의 주요 캐릭터 3인방 중 하나로 서브 주인공 격 캐릭터이다.<br>
+    노란 토끼 캐릭터로, 치이카와 첫 에피소드에서<br> 
+    피자 호빵을 먹으며 본격적으로 첫 등장한다.
+  </div>
+
+</body>
+</html>
