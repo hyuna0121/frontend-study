@@ -5,25 +5,30 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
 
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
   <style>
     * {
       box-sizing: border-box;
     }
 
     .login-background {
-      max-width: 460px;
-      margin: 150px auto;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      /* 뷰포트의 높이만큼 가득 채우려면 100%가 아님에 주의! */
+      height: 100vh;
+    }
+    
+    .login-container {
+      width: 460px;
       border: 1px solid #c5ccd2;
       border-radius: 8px;
-    }
-
-    .login-container {
       padding: 24px;
     }
 
     input {
-      width: 100%;
       height: 60px;
+      width: 100%;
       margin: 0;
       padding: 27px 15px 8px;
       border: 1px solid #c5ccd2;
@@ -34,16 +39,16 @@
       outline-color: #09aa5c;
     }
 
-    .id {
+    #id {
       border-radius: 8px 8px 0px 0px;
     }
-    .pw {
+    #pw {
       border-radius: 0px 0px 8px 8px;
       border-top: none;
     }
-    
-    p {
-      margin: 0;
+
+    .id-box, 
+    .pw-box {
       position: relative;
     }
 
@@ -55,11 +60,18 @@
       transition: 0.3s;
     }
 
-    input:focus + p > .text-label {
+    input:focus + .text-label {
       font-size: 12px;
       padding: 0 8px;
       bottom: 35px;
       left: 7px;
+    }
+
+    .login-container .icon-eye {
+      position: absolute;
+      top: 18px;
+      right: 20px;
+      cursor: pointer;
     }
     
     .btn {
@@ -95,18 +107,19 @@
   <div class="login-background">
     <div class="login-container">
 
-    <input type="text" class="id">
-    <p>
+    <div class="id-box">
+      <input type="text" id="id" class="form-input">
       <label for="id" class="text-label">아이디 또는 전화번호</label>
-    </p>
-
-    <input type="password" class="pw">
-    <p>
+    </div>
+    
+    <div class="pw-box">
+      <input type="password" id="pw" class="form-input">
       <label for="pw" class="text-label">비밀번호</label>
-    </p>
+      <span class="material-symbols-outlined icon-eye">visibility_off</span>
+    </div>
 
-      <button type="button" class="btn">로그인</button>
-      <button type="button" class="btn btn-color">회원가입</button>
+    <button type="button" class="btn">로그인</button>
+    <button type="button" class="btn btn-color">회원가입</button>
     </div>
   </div>
 </body>
