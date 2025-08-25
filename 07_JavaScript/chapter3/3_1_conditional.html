@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // 조건문
+    // 조건식의 결과(true/false)에 따라 코드의 실행 여부나 실행 경로(분기)가 결정되는 구문
+    // if문, switch문
+
+    // 1. if, else, else if
+    // 1) if문
+    // 조건식을 만족하는 경우에만 코드블록을 실행
+    let age = 17;
+    let isAdult = false;
+    if (age > 19) {
+      isAdult = true;
+    }
+    document.write(isAdult, '<br>');
+    
+    // 2) if-else문
+    // 조건식의 결과에 따라 두 가지 중 하나를 실행시킬 때 사용
+    age = 19;
+    if (age > 18) {
+      isAdult = true;
+    } else {
+      isAdult = false;
+    }
+    document.write(isAdult, '<br>');
+    
+    // window.confirm('메세지') : 확인 상자는 사용자가 무언가를 확인하거나 수락하기를 원하는 경우에 사용
+    // 확인을 누르면 true, 취소를 누르면 false를 반환
+    // const result = confirm('회원 탈퇴를 하시겠습니까?');
+    // if (result) {
+    //   document.write('탈퇴 처리되었습니다!');
+    // } else {
+    //   document.write('탈퇴 취소되었습니다!');
+    // }
+        
+    // Quiz
+    // const num = prompt('숫자 입력', '0');
+    // if (num % 2 === 0) {
+    //   document.write('짝수입니다.');
+    // } else {
+    //     document.write('홀수입니다.');
+    // }    
+    // if (num % 2) {
+    //   document.write('홀수입니다.');
+    // } else {
+    //   document.write('짝수입니다.');
+    // }
+    
+    // 3) if-else if 문
+    // 여러 if문 조건식 중 만족하는 것을 찾아 실행, 만족하는 게 없으면 else문 실행
+    const hour = 20;
+    if (hour < 10) {
+      document.write('Good morning', '<br>');
+    } else if (hour < 18) {
+      document.write('Good afternoon', '<br>');
+    } else if (hour < 21) {
+      document.write('Good evening', '<br>');
+    } else {
+      document.write('Good night', '<br>');
+    }
+
+    // Quiz : 
+    // const month = Number(prompt('현재는 몇 월입니까?'));
+
+    // if (month < 1 || month > 12 ) {
+    //   document.write('잘못 입력하셨어요!!');
+    // } else if (month >= 3 && month <= 5) {
+    //   document.write('햇살 가득한 봄이네요!!');
+    // } else if (month >= 6 && month <= 8) {
+    //   document.write('여행 가기 좋은 여름이네요!!');
+    // } else if (month >= 9 && month <= 11) {
+    //   document.write('독서의 계절 가을이네요!!');
+    // } else {
+    //   document.write('눈이 오는 겨울이네요!!');
+    // }
+
+    // 조건식에 논리형 데이터(true/false)가 아닌 다른 타입의 데이터가 입력됐을 때
+    // 0, null, undefined, ''(빈문자), NaN은 false값, 그 외의 값은 true 
+    if (3) {
+      document.write('true로 취급', '<br>');
+    }
+
+    // (응용) 정상적인 값이 들어왔는 지 판단
+    const userName = prompt('방문자의 이름은?');
+    // if (userName !== '') {
+    // if (userName.length > 0) {
+    if (userName) {
+      alert(userName + '님 반갑습니다!')
+    }
+  </script>
+</body>
+</html>
