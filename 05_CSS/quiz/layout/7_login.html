@@ -11,6 +11,13 @@
       box-sizing: border-box;
     }
 
+    .form-input {
+      width: 100%;
+      outline: none;
+      border: none;
+      cursor: pointer;
+    }
+    
     .login-background {
       display: flex;
       justify-content: center;
@@ -25,36 +32,29 @@
       border-radius: 8px;
       padding: 24px;
     }
-
-    input {
-      height: 60px;
-      width: 100%;
-      margin: 0;
-      padding: 27px 15px 8px;
-      cursor: pointer;
-      outline: none;
-    }
     
-    .login-container .id-box {
-      border-radius: 8px 8px 0px 0px;
-    }
+    .login-container .id-box, 
     .login-container .pw-box {
-      border-radius: 0px 0px 8px 8px;
-      border-top: none;
-    }
-    
-    .id-box, 
-    .pw-box {
+      height: 60px;
       border: 1px solid #c5ccd2;
+      padding: 27px 15px 8px;
       position: relative;
     }
     
+    .login-container .id-box {
+      border-radius: 8px 8px 0 0;
+    }
+    .login-container .pw-box {
+      border-radius: 0 0 8px 8px;
+      border-top: 0;
+    }
+
     .login-container .id-box.focused,
     .login-container .pw-box.focused {
       border: 2px solid #09aa5c;
     }
 
-    .text-label {
+    .login-container .text-label {
       color: #737373;
       position: absolute;
       bottom: 20px;
@@ -143,10 +143,18 @@
       });
     })
     
+    const pwBox = document.querySelector('.pw-box .form-input');
+    console.log(pwBox);
+    
     eyeIcon.addEventListener('click', function () {
       const currentEye = eyeIcon.textContent;
-      if (currentEye === 'visibility_off') eyeIcon.textContent = 'visibility';
-      else eyeIcon.textContent = 'visibility_off'
+      if (currentEye === 'visibility_off') {
+        eyeIcon.textContent = 'visibility';
+        pwBox.type = 'text';
+      } else {
+        eyeIcon.textContent = 'visibility_off'
+        pwBox.type = 'password';
+      }
     })
   </script>
 </body>
