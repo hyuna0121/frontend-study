@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <style>
+    .bead-container {
+      display: flex;
+      flex-wrap: wrap;
+    }
+    .bead {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background-color: skyblue;
+      margin: 10px;
+    }
+
+    #text {
+      display: block;
+      margin-top: 20px;
+      resize: none;
+      width: 200px;
+      height: 100px;
+      font-family: sans-serif;
+    }
+  </style>
+</head>
+<body>
+  <h1>홀수? 짝수?</h1>
+  <button type="button" class="addBead">구슬 추가</button>
+  <button type="button" class="isEven">홀짝</button>
+  <button type="button" class="resetBead">초기화</button>
+
+  <div class="bead-container"></div>
+
+  <h1>문자 누적하기</h1>
+
+  <input type="text" class="input-text">
+  <button type="button" class="acc-btn">누적</button>
+  <textarea id="text"></textarea>
+
+  <script>
+    const addBeadBtn = document.querySelector('.addBead');
+    const isEvenBtn = document.querySelector('.isEven');
+    const resetBeadBtn = document.querySelector('.resetBead');
+    const beadContainer = document.querySelector('.bead-container');
+    
+    addBeadBtn.addEventListener('click', function () {
+      beadContainer.innerHTML += '<div class= "bead"></div>'
+    });
+    
+    isEvenBtn.addEventListener('click', function () {
+      const beads = document.querySelectorAll('.bead');
+      // 다른 방법들
+      // beadContainer.children;
+      // beadContainer.childElementCount;
+
+      if (beads.length % 2 === 0) alert('짝수');
+      else alert('홀수');
+    });
+
+    resetBeadBtn.addEventListener('click', function () {
+      beadContainer.innerHTML = '';
+    });
+
+    const inputText = document.querySelector('.input-text');
+    const btn = document.querySelector('.acc-btn');
+    const printArea = document.querySelector('#text');
+    
+    btn.addEventListener('click', function () {
+      printArea.value += inputText.value;
+      inputText.value = '';
+    });
+  </script>
+</body>
+</html>
