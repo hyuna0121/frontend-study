@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  
+  <style>
+    .character-img {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      border: 3px solid rgb(75, 124, 180);
+    }
+    </style>
+</head>
+<body>
+  <h1>날씨 확인</h1>
+
+  <span>계절</span>
+  <input type="radio" name="season" id="spring" value="봄">
+  <label for="spring">봄</label>
+  <input type="radio" name="season" id="summer" value="여름">
+  <label for="summer">여름</label>
+  <input type="radio" name="season" id="fall" value="가을">
+  <label for="fall">가을</label>
+  <input type="radio" name="season" id="winter" value="겨울">
+  <label for="winter">겨울</label>
+
+  <div>
+    <label for="temperature">기온</label>
+    <input type="number" id="temperature">
+  </div>
+
+  <button type="button">확인</button>
+
+  <h1>스폰지밥, 뚱이, 징징이</h1>
+  <select id="character">
+    <option value="sponge" selected>스폰지밥</option>
+    <option value="dung">뚱이</option>
+    <option value="human">징징이</option>
+  </select>
+  <img src="./images/sponge.png" alt="캐릭터 이미지" class="character-img">
+
+  <script>
+    const btn = document.querySelector('button');
+    
+    btn.addEventListener('click', function () {
+      const season = document.querySelector('input[name="season"]:checked');
+      const temperature = document.querySelector('#temperature');
+      let msg = season.value;
+      const temp = Number(temperature.value);
+
+      if (msg === '여름') {
+        if (temp >= 35) msg = '여름 폭염 경보';
+        else if (temp >= 33) msg = '여름 폭염 주의보';
+      } else if (msg === '겨울') {
+        if (temp <= -15) msg = '겨울 한파 경보';
+        else if (temp <= -12) msg = '겨울 한파 주의보';
+      } 
+
+      alert(msg);
+    });
+    
+    const select = document.querySelector('select');
+    const selectedImg = document.querySelector('img');
+
+    select.addEventListener('change', function () {
+      const selectedValue = select.value;
+      let src = '';
+
+      if (selectedValue === 'sponge') src = 'sponge';
+      else if (selectedValue === 'dung') src = 'dung';
+      else src = 'human';
+
+      selectedImg.src = './images/' + src + '.png';
+    })
+  </script>
+</body>
+</html>
