@@ -62,10 +62,12 @@
       transition: 0.3s;
     }
 
-    input:focus + .text-label {
+    .login-container .form-input:focus + .text-label,
+    .login-container .id-box.on .text-label,
+    .login-container .pw-box.on .text-label{
       font-size: 12px;
       padding: 0 8px;
-      bottom: 35px;
+      bottom: 30px;
       left: 7px;
     }
 
@@ -128,6 +130,7 @@
   <script>
     const inputEls = document.querySelectorAll('input.form-input');
     const eyeIcon = document.querySelector('.icon-eye');
+    const pwBox = document.getElementById('pw');
     
     inputEls.forEach(function (inputEl) {
       const parentEl = inputEl.parentElement; // 부모 요소를 반환
@@ -141,21 +144,40 @@
       inputEl.addEventListener('blur', function () {
         parentEl.classList.remove('focused');
       });
-    })
-    
-    const pwBox = document.querySelector('.pw-box .form-input');
-    console.log(pwBox);
+
+      // 이벤트 추가 실습
+      // change : 요소의 값이 변경되고 포커스를 잃었을 때 발생
+      inputEl.addEventListener('change', function () {
+        console.log('change 이벤트 발생!');
+        console.log(inputEl.value);
+
+        if (inputEl.value) { // input 요소에 값이 있으면
+          parentEl.classList.add('on');
+        } else {
+          parentEl.classList.remove('on');
+        }
+      });
+      
+      // input : 요소가 입력을 받을 때마다 변경된 직후에 발생
+      inputEl.addEventListener('input', function () {
+        console.log('input 이벤트 발생!');
+      });
+    });
     
     eyeIcon.addEventListener('click', function () {
-      const currentEye = eyeIcon.textContent;
-      if (currentEye === 'visibility_off') {
-        eyeIcon.textContent = 'visibility';
-        pwBox.type = 'text';
-      } else {
-        eyeIcon.textContent = 'visibility_off'
-        pwBox.type = 'password';
-      }
-    })
+      // if (pwBox.type === 'password') {
+      //   eyeIcon.textContent = 'visibility';
+      //   pwBox.type = 'text';
+      // } else {
+      //   eyeIcon.textContent = 'visibility_off';
+      //   pwBox.type = 'password';
+      // }
+
+      // 삼항 연산자 사용 시
+      const isPassword = pwBox.type === 'password';
+      pwBox.type = isPassword ? 'text' : 'password';
+      eyeIcon.textContent = isPassword ? 'visibility' : 'visibility_off';
+    });
   </script>
 </body>
 </html>

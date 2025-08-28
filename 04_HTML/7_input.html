@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
   <style>
     /* :가상 클래스 선택자::가상 요소 선택자 */
     .placeholder-hidden:focus::placeholder {
@@ -164,6 +165,21 @@
   <!-- 범위 선택(기본 값 : 0 ~ 100) -->
   <label for="volume">음량(0 ~ 50) : </label>
   <input type="range" id="volume" min="0" max="50" step="2">
+  
+  <!-- Quiz -->
+  <span id="volumeValue"></span>
+  <span class="material-symbols-outlined" id="volumeIcon">volume_up</span>
+  <script>
+    const volInput = document.getElementById('volume');
+    const volValue = document.getElementById('volumeValue');
+    const volIcon = document.getElementById('volumeIcon');
+
+    volValue.textContent = volInput.value;
+    volInput.addEventListener('input', function () {
+      volValue.textContent = volInput.value;
+      if (volInput.value === '0') volIcon.textContent = 'volume_off';
+    });
+  </script>
 
   <hr>
 
