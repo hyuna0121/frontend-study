@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .btn {
+      display: block;
+      font-size: 20px;
+      padding: 5px 13px;
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+  <h1>자라나라 스폰지밥</h1>
+  <button type="button" class="btn" onclick="plus()">+</button>
+  <img src="./images/sponge.png" alt="스폰지밥" class="sponge" width="150px">
+
+  <h3>이미지 크기 조정</h3>
+  <div>
+    <label for="width">가로 : </label>
+    <input type="number" id="width">
+    <div>
+      <label for="height">세로 : </label>
+      <input type="number" id="height">
+    
+      <button type="button" class="btn-2" onclick="resize()">변경</button>
+    </div>
+  </div>
+  <img src="./images/dung.png" alt="뚱이" class="dung">
+
+  <script>
+    const sponge = document.querySelector('.sponge');
+    
+    function plus() {
+      // 주의! 이미지는 가로 사이즈만 바꾸면 자동으로 세로 사이즈도 바뀜
+      // imgEl.width += 100;
+      // imgEl.height += 100;
+      
+      // 변수에 저장해두고 저장된 값을 사용
+      const imgWidth = sponge.width;
+      const imgHeight = sponge.height;
+
+      // 방법 1 : HTML 속성(attribute) -> DOM 속성(property)
+      // sponge.width = imgWidth + 100;
+      // sponge.height = imgHeight + 100;
+
+      // 방법 2 : CSS로 제어 (단위를 넣어야 함)
+      sponge.style.width = imgWidth + 100 + 'px';
+      sponge.style.width = imgHeight + 100 + 'px';
+    }
+
+    const dung = document.querySelector('.dung');
+    const widthVal = document.getElementById('width');
+    const heightVal = document.getElementById('height');
+
+    function resize() {
+      // 방법 1
+      // dung.width = widthVal.value;
+      // dung.height = heightVal.value;
+
+      // 방법 2
+      dung.style.width = widthVal.value + 'px';
+      dung.style.height = heightVal.value + 'px';
+    }
+  </script>
+</body>
+</html>
