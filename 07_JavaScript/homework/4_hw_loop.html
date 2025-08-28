@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <style>
+    .ordered {
+      margin-top: 20px;
+    }
+
+    table {
+      margin-top: 10px;
+    }
+
+    .orange {
+      display: flex;
+      flex-wrap: wrap;
+    }
+    .or {
+      margin: 10px;
+    }
+  </style>
+</head>
+<body>
+  <h1>콤보세트</h1>
+  <label for="popcorn">개수 : </label>
+  <input type="number" class="set-num">
+  <button type="button" class="btn-order">주문</button>
+  <div class="ordered"></div>
+
+  <h2>행 열 갯수 각각 입력받아 테이블 만들기</h2>
+  <button type="button" class="btn-generate-table">테이블 생성</button>
+  <div class="table"></div>
+
+  <h2>귤 농장</h2>
+  <button type="button" class="btn-start">체험 시작</button>
+  <div class="orange"></div>
+  <h2 class="end"></h2>
+
+  <script>
+    const orderBtn = document.querySelector('.btn-order');
+    const ordered = document.querySelector('.ordered');
+    
+    orderBtn.addEventListener('click', function () {
+      ordered.innerHTML = '';
+      const num = document.querySelector('.set-num').value;
+      
+      for (let i = 0; i < num; i++) {
+        ordered.innerHTML += '<div class="combo-set"><img src="./images/popcorn.png" alt="팝콘"><img src="./images/coke.png" alt="콜라"><img src="./images/coke.png" alt="콜라"></div>';
+      }
+    });
+
+    const tableBtn = document.querySelector('.btn-generate-table');
+    const table = document.querySelector('.table');
+
+    tableBtn.addEventListener('click', function() {
+      const row = Number(prompt('테이블 행의 갯수는?'));
+      const col = Number(prompt('테이블 열의 갯수는?'));
+      
+      let t = '<table border="1">';
+      for (let i = 0; i < row; i++) {
+        t += '<tr>'
+        for (let j = 1; j <= col; j++) {
+          t += `<td>${(i * row) + j}</td>`;
+        }
+        t += '</tr>';
+      }
+      t += '</table>';
+
+      table.innerHTML = t;
+    });
+
+    const startBtn = document.querySelector('.btn-start');
+    const end = document.querySelector('.end');
+
+    startBtn.addEventListener('click', function () {
+      const totalGram = Number(prompt('몇 g까지 딸 수 있음?'));
+      const orange = document.querySelector('.orange');
+
+      for (let i = 10; i <= totalGram; i += 10) {
+        orange.innerHTML += `<div class="or"><p>귤${i}g</p><img src="./images/gyul.png" alt="orange"></div>`;
+      }
+
+      end.textContent = '체험 종료!!';
+    });
+    </script>
+
+</html>
+</body>
