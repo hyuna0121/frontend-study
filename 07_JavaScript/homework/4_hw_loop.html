@@ -26,7 +26,7 @@
 <body>
   <h1>콤보세트</h1>
   <label for="popcorn">개수 : </label>
-  <input type="number" class="set-num">
+  <input type="number" class="set-num" id="popcorn">
   <button type="button" class="btn-order">주문</button>
   <div class="ordered"></div>
 
@@ -48,7 +48,12 @@
       const num = document.querySelector('.set-num').value;
       
       for (let i = 0; i < num; i++) {
-        ordered.innerHTML += '<div class="combo-set"><img src="./images/popcorn.png" alt="팝콘"><img src="./images/coke.png" alt="콜라"><img src="./images/coke.png" alt="콜라"></div>';
+        ordered.innerHTML += 
+        `<div>
+          <img src="./images/popcorn.png" alt="팝콘">
+          <img src="./images/coke.png" alt="콜라">
+          <img src="./images/coke.png" alt="콜라">
+        </div>`;
       }
     });
 
@@ -76,11 +81,15 @@
     const end = document.querySelector('.end');
 
     startBtn.addEventListener('click', function () {
-      const totalGram = Number(prompt('몇 g까지 딸 수 있음?'));
+      const totalGram = Number(prompt('몇 g그램?'));
       const orange = document.querySelector('.orange');
 
       for (let i = 10; i <= totalGram; i += 10) {
-        orange.innerHTML += `<div class="or"><p>귤${i}g</p><img src="./images/gyul.png" alt="orange"></div>`;
+        orange.innerHTML += 
+        `<div class="or">
+          <p>귤${i}g</p>
+          <img src="./images/gyul.png" alt="orange">
+        </div>`;
       }
 
       end.textContent = '체험 종료!!';
